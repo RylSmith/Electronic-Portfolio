@@ -1,0 +1,149 @@
+
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rylee A Smith</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Rylee A Smith</h1>
+    <p>Project Portfolio</p>
+</header>
+
+<nav>
+    <a href="../index.html">Home</a>
+    <a href="../CIS_Syllabi.html">CIS Syllabi</a>
+    <a href="../pdf/Rylee Smith Resume.pdf">Resume</a>
+    <a href="../projects.html">Projects</a>
+</nav>
+
+<main>
+
+    <h2>Drawer Counter App</h2>
+
+    <section>
+        <h3>Description</h3>
+        <p>
+            The purpose of this project was to develop an application to help closing managers close drawers easier and with 
+            less errors. This was the final of CIS 131 where we were told to pick a personal project that we wanted to make. I 
+            was a closing manager at the time and I really liked the idea of having an application to help me with the process so 
+            I decided to make it.
+        </p>
+    </section>
+
+    <section>
+        <h3>Technologies Used</h3>
+        <ul>
+            <li>C#</li>
+            <li>Windows Forms</li>
+            <li>Visual Studio 2022</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Screenshots</h3>
+
+        <div class="image-gallery">
+
+            <a href="../images/DrawerCounterMain.png" target="_blank">
+                <figure>
+                    <img src="../images/DrawerCounterMain.png" alt="Screenshot 1">
+                    <figcaption>Main Dashboard</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/DrawerCounterCheckAdd.png" target="_blank">
+                <figure>
+                    <img src="../images/DrawerCounterCheckAdd.png" alt="Screenshot 2">
+                    <figcaption>Adds to a list of checks that can be totaled</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/DrawerCounterCheckTotal.png" target="_blank">
+                <figure>
+                    <img src="../images/DrawerCounterCheckTotal.png" alt="Screenshot 3">
+                    <figcaption>Totals checks in the list</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/DrawerCounterFileLocation.png" target="_blank">
+                <figure>
+                    <img src="../images/DrawerCounterFileLocation.png" alt="Screenshot 4">
+                    <figcaption>Drawer data is saved here</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/DrawerCounterSaveFile.png" target="_blank">
+                <figure>
+                    <img src="../images/DrawerCounterSaveFile.png" alt="Screenshot 5">
+                    <figcaption>Example of what drawer data is saved</figcaption>
+                </figure>
+            </a>
+
+        </div>
+    </section>
+    <section>
+        <h3>Sample Code</h3>
+
+        <p>This function takes all user input variables made from a previous function and multiplys the values by respective money 
+            values. It then creates a new variable for the drawer total and adds up all the values after being adjusted above.</p>
+
+        <pre class="code-block">
+
+            public double AddDrawer(Drawer drawer, int Drawer_Money)
+            {
+                drawer.OneHundred = drawer.OneHundred * 100;
+                drawer.Fifty = drawer.Fifty * 50;
+                drawer.Twenty = drawer.Twenty * 20;
+                drawer.Ten = drawer.Ten * 10;
+                drawer.Five = drawer.Five * 5;
+                drawer.One = drawer.One * 1;
+
+                drawer.Quarters = drawer.Quarters * 0.25;
+                drawer.Dimes = drawer.Dimes * 0.10;
+                drawer.Nickels = drawer.Nickels * 0.05;
+                drawer.Pennies = drawer.Pennies * 0.01;
+
+                drawer.Two = drawer.Two * 2;
+                drawer.Dollar_Coins = drawer.Dollar_Coins * 1;
+                drawer.Half_Dollars = drawer.Half_Dollars * 0.50;
+
+                double Drawer_Total;
+
+                Drawer_Total = drawer.OneHundred + drawer.Fifty + drawer.Twenty + drawer.Ten + drawer.Five + drawer.One + drawer.Quarters 
+                + drawer.Dimes + drawer.Nickels + drawer.Pennies + drawer.Two + drawer.Dollar_Coins + drawer.Half_Dollars;
+
+                return PullDrawer(Math.Round(Drawer_Total, 2), Drawer_Money);
+
+            }
+        </pre>
+
+        <p>This function saves drawer information in the files of the application. This function works by using StreamWriter to write
+            to an existing file or make a new one if none matchs the name. The data for the file is pulled from the rich text box on the main
+            GUI. After the file is done writing the function closes the StreamWriter and closes the application.
+        </p>
+
+        <pre class="code-block">
+            private void btnSave_Click(object sender, EventArgs e)
+            {
+                StreamWriter fileWriter = new StreamWriter("DrawerData.txt");
+                fileWriter.WriteLine(richTxtBTotals.Text);
+
+                fileWriter.Close();
+                Close();
+            }
+        </pre>
+
+    </section>
+
+</main>
+
+</body>
+</html>

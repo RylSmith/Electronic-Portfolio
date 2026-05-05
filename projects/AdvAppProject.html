@@ -1,0 +1,127 @@
+
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rylee A Smith</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Rylee A Smith</h1>
+    <p>Project Portfolio</p>
+</header>
+
+<nav>
+    <a href="../index.html">Home</a>
+    <a href="../CIS_Syllabi.html">CIS Syllabi</a>
+    <a href="../pdf/Rylee Smith Resume.pdf">Resume</a>
+    <a href="../projects.html">Projects</a>
+</nav>
+
+<main>
+
+    <h2>Employee Resource App</h2>
+
+    <section>
+        <h3>Description</h3>
+        <p>
+            The purpose of this project was to develop a full app with a group of students taking the entire semester. 
+            Our group decided to make an cloud-based app for businesses with employees and want to give them the ability to 
+            view important information about their job.
+        </p>
+    </section>
+
+    <section>
+        <h3>Technologies Used</h3>
+        <ul>
+            <li>JavaScript</li>
+            <li>CSS</li>
+            <li>React</li>
+            <li>Vercel</li>
+            <li>Visual Studio Code</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Screenshots</h3>
+
+        <div class="image-gallery">
+
+            <a href="../images/Adv App Dashboard.png" target="_blank">
+                <figure>
+                    <img src="../images/Adv App Dashboard.png" alt="Screenshot 1">
+                    <figcaption>Main dashboard</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/Adv App Hamburger.png" target="_blank">
+                <figure>
+                    <img src="../images/Adv App Hamburger.png" alt="Screenshot 2">
+                    <figcaption>Navigation through hamburger icon</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/Adv App Profile.png" target="_blank">
+                <figure>
+                    <img src="../images/Adv App Profile.png" alt="Screenshot 3">
+                    <figcaption>User profile</figcaption>
+                </figure>
+            </a>
+
+            <a href="../images/Adv App Availability.png" target="_blank">
+                <figure>
+                    <img src="../images/Adv App Availability.png" alt="Screenshot 4">
+                    <figcaption>Set user availability page</figcaption>
+                </figure>
+            </a>
+
+        </div>
+    </section>
+    <section>
+        <h3>Sample Code</h3>
+
+        <p>This function checks whether a user is authenticated by retrieving the current session from Supabase. 
+        If no active session exists, the user is redirected to the login page. This ensures that protected parts of 
+        the application are only accessible to authenticated users.</p>
+
+        <pre class="code-block">
+            async function requireAuth() {
+                const { data: { session }, error } = await supabase.auth.getSession();
+                if (error) console.error('getSession error:', error);
+                if (!session) {
+                navigate('/login');
+                return null;
+                }
+                return session;
+            }
+        </pre>
+
+        <p>This function formats a time string into a more readable 12-hour format.
+        If no time value is provided, it returns an empty string to avoid errors or displaying invalid data.
+        The function splits the input time into hours and minutes, then creates a Date object and sets those values accordingly.</p>
+
+        <pre class="code-block">
+            const formatTime = (timeStr) => {
+                if (!timeStr) return '';
+                const [hours, minutes] = timeStr.split(':');
+                const d = new Date();
+                d.setHours(parseInt(hours), parseInt(minutes));
+                return d.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true });
+            };
+        </pre>
+
+    </section>
+
+</main>
+
+</body>
+</html>
